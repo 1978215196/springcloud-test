@@ -1,0 +1,12 @@
+server:
+  port: 8111 # \u670D\u52A1\u7AEF\u53E3
+
+spring:
+  application:
+    name: test-service #\u670D\u52A1\u540D\u79F0
+  cloud:
+    nacos: #nacos\u6CE8\u518C\u4E2D\u5FC3
+      discovery:
+        server-addr: 192.168.0.179:8848
+        username: nacos
+        password: nacos

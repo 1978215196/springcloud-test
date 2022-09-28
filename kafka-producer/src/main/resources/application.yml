@@ -6,27 +6,12 @@ spring:
     name: kafka-producer
 
   kafka:
-    #   bootstrap-servers: 192.118.118.58:9092
     bootstrap-servers: hayzt.cn:9092
-    producer:
-      retries: 0
-      acks: 1
-      batch-size: 16384
-      buffer-memory: 33554432
+    producer: # producer 生产者
+      retries: 0 # 重试次数
+      acks: 1 # 应答级别:多少个分区副本备份完成时向生产者发送ack确认(可选0、1、all/-1)
+      batch-size: 16384 # 批量大小
+      buffer-memory: 33554432 # 生产端缓冲区大小
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonSerializer
-#    consumer: # consumer消费者
-#      #group-id: locationgroup # 默认的消费组ID
-#      group-id: test_group
-#      enable-auto-commit: true # 是否自动提交offset
-#      auto-commit-interval: 100  # 提交offset延时(接收到消息后多久提交offset)
-#      # earliest:当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费
-#      # latest:当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据
-#      # none:topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常
-#      auto-offset-reset: latest
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      # value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      security-status: false #是否开启认证
-#      username: txwa_kafka         #连接消费用户名
-#      password: Admin@123     #消费连接用户密码
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-deserializer: org.apache.kafka.common.serialization.StringSerializer

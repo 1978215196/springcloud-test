@@ -1,14 +1,13 @@
 package com.hayzt.controller;
 
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
+import com.hayzt.pojo.Man;
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-
-import javax.annotation.Resource;
 
 @Component
 @Slf4j
@@ -21,7 +20,8 @@ public class MessageLisenter {
         log.info("Kafka Consume prtition:{}, offset:{}", record.partition(), record.offset());
 
         String obj = record.value();
-        log.info("接收消息：{}", obj);
+        Man man = JSONObject.parseObject(obj, Man.class);
+        log.info("接收消息：{}", "姓名："+man.getName()+"，年龄："+man.getAge()+"，编号："+man.getNum());
     }
 
 }
